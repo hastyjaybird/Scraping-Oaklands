@@ -8,8 +8,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import WebDriverException, NoSuchElementException
-import datetime
-
 
 apn_file = 'property_list.csv'
 output_file = 'output.csv'
@@ -20,7 +18,7 @@ def apn_list(apn_file):
 	return prop_list
 
 def grabdates(apn_file):
-	# selenium uses a browser wrapper (in this case, firefox) as a mask to get around websites that may have security against bots. Though for this particular site its not needed, just using it because I was curious how to use selenium.
+	# Selenium acts like a browser (in this case, firefox) as a mask to get around websites that may have security against bots. While it may not be as fast as Beautiful Soup, its at least better supported and fairly robust. (Really I just wanted to learn how to use Selenium) 
 
 	# dont pop up the browser window
 	options = Options()
@@ -102,6 +100,7 @@ def export_to_csv(output_list):
 	# generate dataframe and then export to csv
 	output_df = pd.DataFrame(output_list)
 	output_df.to_csv(output_file, index=False, header=False)
-	print output_df
+	# print output_df
+
 		
 grabdates(apn_file)
